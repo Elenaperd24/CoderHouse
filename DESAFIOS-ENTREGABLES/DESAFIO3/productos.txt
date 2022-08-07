@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Escuadra",
+    "price": 123.45,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "id": 1
+  },
+  {
+    "title": "Calculadora",
+    "price": 234.56,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+    "id": 2
+  },
+  {
+    "title": "Globo Terraqueo",
+    "price": 264.4,
+    "thumbnail": "https://i.pinimg.com/originals/44/e6/48/44e648812c1c0cfdc41f3285f8f40119.jpg",
+    "id": 3
+  },
+  {
+    "title": "Pelota Rosa",
+    "price": 264.4,
+    "thumbnail": "https://assets.adidas.com/images/w_600,f_auto,q_auto/fc3d279b87ca45ea88cfabaa00b290d1_9366/Pelota_EPP_II_Club_Rosa_FS0378_01_standard.jpg",
+    "id": 4
+  }
+]
