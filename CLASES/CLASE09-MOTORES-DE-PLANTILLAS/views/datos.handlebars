@@ -1,0 +1,10 @@
+{{>love}}
+<h1> Datos Personales</h1>
+
+{{#if listExists}} 
+<ul>
+    {{#each studentsList}}
+    <li>{{nombre}}</li>
+    {{/each}}
+</ul>
+{{/if}}

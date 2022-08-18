@@ -44,11 +44,16 @@ let probandoLET =  "global"
 })();
  */
 
-const add = (function() {
+/* const add = (function() {
     let counter = 0
     return function() {counter += 40; return counter}
 } ) ();
 
 console.log(add());
 console.log(add());
-console.log(add());
+console.log(add()); */
+
+let first = new Date();
+let second = new Date(events[3].fecha)
+
+console.log(second)
