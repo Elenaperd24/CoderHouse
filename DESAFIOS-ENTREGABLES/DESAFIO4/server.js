@@ -4,9 +4,10 @@ const Api = require("./funciones")
 
 const app = express()
 const routProduct = Router()
-let products = [
-      
+let products = [    
 ]
+
+let memoria
 
 const myApi = new Api()
 
