@@ -4,7 +4,6 @@ const Api = require("./funciones")
 
 const app = express()
 const routProduct = Router()
-let products = []
 
 const myApi = new Api()
 
@@ -18,34 +17,44 @@ app.use('/api/products', routProduct)
 
 
 //1) GET '/api/routProduct' -> devuelve todos los routProduct.
-routProduct.get('/', myApi.getAll, (req, res, next) => {
-    myApi.getAll(req, res, products, next)
+routProduct.get('/', (req, res, next) => {
+    const products = myApi.getAll()
+    res.send(products)
 })
 
 //GET '/api/routProduct/:id' -> devuelve un producto según su id.
-routProduct.get('/:id', myApi.getById, (req, res, next) => {
+routProduct.get('/:id', (req, res, next) => {
     const id = req.params.id
-    myApi.getById(req, res, id, products, next)
+    const product = myApi.getById(id)
+
+    if (product == null) {
+        res.status(400).send({ error: "producto no encontrado" })
+    }
+    else {
+        res.send(product)
+    }
 })
 
 //POST '/api/routProduct' -> recibe y agrega un producto, y lo devuelve con su id asignado.
-routProduct.post('/', myApi.postData, (req, res, next) => {
-    const product = req.body
-    console.log(product)
-    myApi.postData(req, res, product, products, next)
+routProduct.post('/', (req, res, next) => {
+    const newProduct = req.body    
+    const productUpdate = myApi.postData(newProduct)
+    res.send(productUpdate)
 })
 
 //PUT '/api/routProduct/:id' -> recibe y actualiza un producto según su id.
-routProduct.put('/:id', myApi.putData, (req, res, next) => {
+routProduct.put('/:id', (req, res, next) => {
     const id = req.params.id
-    const data = req.body    
-    myApi.putData(req, res, id, data, products, next)
+    const data = req.body
+    myApi.putData(id, data)
+    res.status(200).send({message: "datos actualizados"})
 })
 
 //DELETE '/api/routProduct/:id' -> elimina un producto según su id.
-routProduct.delete('/:id', myApi.deleteData, (req, res, next) => {
+routProduct.delete('/:id', (req, res, next) => {
     const id = req.params.id
-    myApi.deleteData(req, res, id, products,next)
+    myApi.deleteData(id)
+    res.status(200).send({message: "producto eliminado"})
 })
 
 

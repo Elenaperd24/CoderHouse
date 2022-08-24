@@ -1,43 +1,39 @@
 class Api {
     constructor() {
-
+        this.products = []
     }
 
-    getAll(req, res, products, next) {
-        res.send(products)
+    getAll() {
+        return this.products
     }
 
-    getById(req, res, id, products, next) {
-        const productSelect = products.filter(item => item.id == id)
-
+    getById(id) {
+        const productSelect = this.products.filter(item => item.id == id)
         if (productSelect.length == 0) {
-            res.status(400).send({ error: "producto no encontrado" })
             return null
         }
         else {
-            res.send(productSelect)
             return productSelect
-
         }
     }
 
-    postData(req, res, product, products, next) {
-
-        if (products.length == 0) {
+    postData(product) {
+ 
+        if (this.products.length == 0) {
             product.id = 1
-            products.push(product)
+            this.products.push(product)
         }
         else {
-            const newId = products.length + 1
+            const newId = this.products.length + 1
             product.id = newId
-            products.push(product)
+            this.products.push(product)
         }
-
-        res.send(product)
+        
+        return product
     }
-    putData(req, res, id, product, products, next) {
+    putData(id, product) {
 
-        products.map(item => {
+        this.products.map(item => {
             if (item.id == id) {
                 item.title = product.title
                 item.price = product.price
@@ -45,14 +41,13 @@ class Api {
             }
         })
 
-        res.send(products)
+        return this.products
 
     }
-    deleteData(req, res, id, products, next) {
-        const productSelect = products.filter(item => item.id != id)
-        console.log(productSelect)
-        products = productSelect
-        res.send(products)
+    deleteData(id) {
+        const productSelect = this.products.filter(item => item.id != id)        
+        this.products = productSelect
+        return this.products
     }
 
 }

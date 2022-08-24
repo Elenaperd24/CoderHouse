@@ -1,3 +1,2 @@
-let data =[]
-
+let data = []
 module.exports = data
