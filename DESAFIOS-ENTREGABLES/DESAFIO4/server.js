@@ -4,10 +4,7 @@ const Api = require("./funciones")
 
 const app = express()
 const routProduct = Router()
-let products = [    
-]
-
-let memoria
+let products = []
 
 const myApi = new Api()
 
@@ -34,6 +31,7 @@ routProduct.get('/:id', myApi.getById, (req, res, next) => {
 //POST '/api/routProduct' -> recibe y agrega un producto, y lo devuelve con su id asignado.
 routProduct.post('/', myApi.postData, (req, res, next) => {
     const product = req.body
+    console.log(product)
     myApi.postData(req, res, product, products, next)
 })
 
