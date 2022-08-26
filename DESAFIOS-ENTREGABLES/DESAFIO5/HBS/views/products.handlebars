@@ -1,17 +1,25 @@
-<h1>PRODUCTS</h1>
+<div style="text-align:center ;">
+    <div >
+        <h1>PRODUCTS</h1>
+    </div>
+    {{#if products}}
+    <div style="display: flex; justify-content:center" >
+        {{#each products}}
+        <div class="card" style="width: 18rem; margin:5px">
+            <img src={{ thumbnail}} class="card-img-top" alt="...">
+            <div class="card-body" style="background-color:pink">
+                <p class="card-text">Title: {{title}}</p>
+                <p class="card-text">Price: {{price}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 
-{{#if products}}
+    {{else}}
+    <h2>No existen Productos</h2>
+    {{/if}}
+    <div >
+        <button> <a style="text-decoration:none ;" href="http://localhost:3000/">cargar productos</a></button>
 
-    {{#each products}}
-    <div style="background-color: pink; width:20% ; margin: 5px;">
-      <div>Title: {{title}}</div>
-      <div>Price: {{price}}</div>
-     <div><img src={{ thumbnail}} alt=""></div>
-     </div>
-    {{/each}}
-
-   <button> <a href="http://localhost:3000/">cargar productos</a></button>
-
-{{else}}
-    <h2>Productos no existen </h2>
-{{/if}}
+    </div>
+</div>
