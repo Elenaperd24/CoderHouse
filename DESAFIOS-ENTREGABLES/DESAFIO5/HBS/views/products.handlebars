@@ -1,0 +1,17 @@
+<h1>PRODUCTS</h1>
+
+{{#if products}}
+
+    {{#each products}}
+    <div style="background-color: pink; width:20% ; margin: 5px;">
+      <div>Title: {{title}}</div>
+      <div>Price: {{price}}</div>
+     <div><img src={{ thumbnail}} alt=""></div>
+     </div>
+    {{/each}}
+
+   <button> <a href="http://localhost:3000/">cargar productos</a></button>
+
+{{else}}
+    <h2>Productos no existen </h2>
+{{/if}}

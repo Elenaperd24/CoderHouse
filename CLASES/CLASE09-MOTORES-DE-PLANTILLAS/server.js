@@ -4,17 +4,19 @@
 
 // PARA USAR HANDLEBAR DEL LADO DEL SERVIDOR LO DEBO IMPORTAR
 
-//DEL LADO DEL CLIENETE EN EL HTML LO USO CON CDN
+//DEL LADO DEL CLIENTE EN EL HTML LO USO CON CDN
 
 const express =  require('express')
 const {engine} = require('express-handlebars')
 
-const app = express()
+const app = express() 
 
 app.engine('handlebars',engine())// le paso el motor de plantilla y le paso exphbs para ejecutarlo dentro de engine
 // seteo de las 
 app.set('view engine', 'handlebars')
 app.set('views', './views')
+
+
 
 //my endpoints
     //primer ejemplo
