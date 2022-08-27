@@ -1,0 +1,11 @@
+html
+    head
+    body
+        h1 CARGAR PRODUCTOS
+        form( method="POST" action="/products")
+            input(type="text" name="title" placeholder="title")
+            input(type="text" name="price" placeholder="price")
+            input(type="text" name="thumbnails" placeholder="thumbnails")
+            input(type="submit" value="enviar")
+        button
+            a(href="/products") TODOS LOS PRODUCTOS   
