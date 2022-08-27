@@ -16,8 +16,7 @@ app.get('/', (req, res) => {
     res.render("form") 
 })
 
-app.post('/products', (req, res) => { 
-    console.log(req.body)
+app.post('/products', (req, res) => {    
     const product = req.body
     myApi.postData(product)
     res.render('form')
