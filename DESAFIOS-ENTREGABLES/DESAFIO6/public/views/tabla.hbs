@@ -1,0 +1,19 @@
+{{#if products.length}}
+
+<table>
+    <tr>
+        <th>nombre</th>
+        <th>precio</th>
+        <th>imagen</th>
+    </tr>
+    {{#each products}}
+    <tr>
+        <td>{{this.title}}</td>
+        <td>{{this.price}}</td>
+        <td> <img style="max-width:100px ;" src={{this.thumbnail}} /></td>
+
+    </tr>
+    {{/each}}
+</table>
+
+{{/if}}
