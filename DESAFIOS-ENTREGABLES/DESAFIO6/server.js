@@ -1,15 +1,16 @@
 const express = require('express')
 const {Server: HttpServer} = require('http')
 const Api = require('./funciones')
-
-// dentro de la dependencia http hay un objeto llamado Server
-//lo renombro para diferenciarlos con server Socket.io por eso Serve: HttpServer
+const moment = require('moment')
 
 const {Server: IOserver} = require('socket.io')
 
-const app = express() // vamos a usar solo express com framework de back no para servir
+const app = express() 
 
 const myApi = new Api()
+
+let date = moment().format('D/MM/YYYY, h:mm:ss a')
+
 
 //Midleword
 app.use(express.static('public'))
@@ -17,36 +18,37 @@ app.use(express.static('public'))
 const httpServer = new HttpServer(app) //inicializo server http
 const io =  new IOserver(httpServer)
 
-const products = [{title:"Camisa" , price:500 , thumbnail: "http://d3ugyf2ht6aenh.cloudfront.net/stores/103/133/products/camisa-silver-ridge-mu-l21-523936152c51ab6fa515131786953784-640-0.jpg"}]
-
-app.post('/products', (req, res) => {
-    const product = req.body
-    myApi.postData(product)
-    res.render('form')
-})
-
-app.get('/products', (req, res) => {
-    const products = myApi.getAll()
-    res.render('products', {products}) 
-})
-
-
+const messages = []
 
 io.on("connection", socket => { 
     console.log("Nuevo cliente conectado")
     //socket es el cliente que emite el mensaje
     //entra cuando el usuario se conecto por eso recibo el mensaje aqui (evento)
-
-    socket.emit("products", products) // cuando se conecta el socket le envio lo mensajes
-                                            //para evitar que cuando se refresque el front se pierdan los mensajes
+    const products = myApi.getAll()
+    socket.emit("products", products) // cuando se conecta el socket le envio todos los productos                                            
+    socket.emit('messages', messages) //mensajes
     
-   /*  socket.on('new-message', message =>{ 
+   socket.on('new-product', product =>{  //recibo el mensaje del cliente
+        myApi.postData(product)
 
-        messages.push(message)  
+        const products = myApi.getAll()
 
-        io.sockets.emit("new-chat-message", messages ) // socket io tiene una base de datos de todos los usuarios conectados
+        io.sockets.emit("products", products) //envio todos los productos a todos los usuarios
+    }) 
 
-    }) */
+    // CHAT CLIENTE SERVIDOR
+
+    socket.on('new-message', info =>{  // recibo el mensaje del cliente    
+        console.log(info)
+        const infoMessage = {
+            email: info.email,
+            date: date,
+            message: info.message
+        }
+         messages.push(infoMessage)
+
+        io.sockets.emit("messages", messages) //envio todos los productos a todos los usuarios
+    }) 
 
 })
 
