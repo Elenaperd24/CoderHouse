@@ -9,9 +9,6 @@ const app = express()
 
 const myApi = new Api()
 
-let date = moment().format('D/MM/YYYY, h:mm:ss a')
-
-
 //Midleword
 app.use(express.static('public'))
 
@@ -22,13 +19,14 @@ const messages = []
 
 io.on("connection", socket => { 
     console.log("Nuevo cliente conectado")
+    
     //socket es el cliente que emite el mensaje
     //entra cuando el usuario se conecto por eso recibo el mensaje aqui (evento)
     const products = myApi.getAll()
     socket.emit("products", products) // cuando se conecta el socket le envio todos los productos                                            
     socket.emit('messages', messages) //mensajes
     
-   socket.on('new-product', product =>{  //recibo el mensaje del cliente
+   socket.on('new-product', product =>{  //recibo el productoss del cliente
         myApi.postData(product)
 
         const products = myApi.getAll()
@@ -37,9 +35,8 @@ io.on("connection", socket => {
     }) 
 
     // CHAT CLIENTE SERVIDOR
-
     socket.on('new-message', info =>{  // recibo el mensaje del cliente    
-        console.log(info)
+        let date = moment().format('D/MM/YYYY, h:mm:ss a')
         const infoMessage = {
             email: info.email,
             date: date,
