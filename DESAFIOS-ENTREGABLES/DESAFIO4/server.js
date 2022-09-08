@@ -10,7 +10,7 @@ const myApi = new Api()
 //MIDELWORD
 app.use(express.json()) // convierto a JSON LA DATA
 app.use(express.urlencoded({ extended: true })) //DESCODIFICO
-app.use(express.static(__dirname + '/public'))
+app.use(static ,'/public')
 
 
 app.use('/api/products', routProduct)
