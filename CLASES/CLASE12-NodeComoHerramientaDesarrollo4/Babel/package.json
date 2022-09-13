@@ -1,18 +1,18 @@
 {
-  "name": "clase11-websockets",
+  "name": "clase12-nodecomoherramientadesarrollo4",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "build": "babel ./origin.js -o ./destino.js -w", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1",
-    "nodemon": "^2.0.19",
-    "socket.io": "^4.5.1"
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10"
   }
 }

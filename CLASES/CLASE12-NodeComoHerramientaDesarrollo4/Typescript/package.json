@@ -1,18 +1,16 @@
 {
-  "name": "clase11-websockets",
+  "name": "typescript",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1",
-    "nodemon": "^2.0.19",
-    "socket.io": "^4.5.1"
+    "typescript": "^4.8.2"
   }
 }
