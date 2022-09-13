@@ -21,9 +21,7 @@ io.on("connection", socket => {
     
     socket.on('mensajeEnviado', mensajes =>{        
         io.sockets.emit("mensajeRecibido", mensajes ) // socket io tiene una base de datos de todos los usuarios conectados
-
     })
-
 })
 
 
