@@ -1,0 +1,35 @@
+.content{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0 !important ;
+}
+.productsSeccion{
+    background-color:#E9ECEF;
+    padding: 10px;
+}
+h1{
+    color: blue;
+}
+
+h2{
+    color: brown;
+}
+
+.centerMessage{
+    margin-top: 20px;
+    background-color:#E9ECEF;
+    padding: 10px;
+}
+
+.email{
+    color: blue;
+}
+.date{
+    color: brown;
+}
+
+.message{
+color: green;
+}
